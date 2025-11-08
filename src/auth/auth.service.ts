@@ -28,11 +28,11 @@ export class AuthService {
 
   async login(email: string, password: string) {
     const user = await this.usersService.findByEmail(email);
-    if (!user) throw new UnauthorizedException('User not found.');
+    if (!user) throw new UnauthorizedException('Usuário não encontrado.');
 
-    const isPasswordValid = brcypt.compare(password, user.password);
+    const isPasswordValid = await brcypt.compare(password, user.password);
     if (!isPasswordValid)
-      throw new UnauthorizedException('Incorrect password.');
+      throw new UnauthorizedException('Senha incorreta.');
 
     const payload = { sub: user.id, username: user.name,role: user.role };
     const token = this.jwtService.sign(payload);
