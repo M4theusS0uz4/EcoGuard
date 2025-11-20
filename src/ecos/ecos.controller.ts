@@ -30,7 +30,7 @@ export class EcosController {
   findAll() {
     return this.ecoService.findAll();
   }
-  @Roles('INDUSTRY')
+@Roles('INDUSTRY')
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.ecoService.findOne(id);

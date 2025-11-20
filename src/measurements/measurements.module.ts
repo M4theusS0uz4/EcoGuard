@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { MeasurementsService } from './measurements.service';
 import { MeasurementsController } from './measurements.controller';
+import { MeasurementsService } from './measurements.service';
 import { PrismaService } from 'src/prisma_NST/prisma.service';
 
 @Module({
-  providers: [MeasurementsService, PrismaService],
   controllers: [MeasurementsController],
+  providers: [MeasurementsService, PrismaService],
 })
 export class MeasurementsModule {}
